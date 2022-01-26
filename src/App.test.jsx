@@ -34,8 +34,8 @@ console.log(user)
 
 // 🚨 Create your server
 const server = setupServer(
-  rest.get('https://uzgiamkrbapxufnwdrja.supabase.co', (req, res, ctx) => {
-    return res(ctx.json(user))
+  rest.get('https://uzgiamkrbapxufnwdrja.supabase.co/rest/v1/users', (req, res, ctx) => {
+    return res(ctx.json([user]))
   })
 )
 
@@ -45,7 +45,7 @@ beforeAll(() => server.listen())
 // 🚨 Close server when complete
 afterAll(() => server.close())
 
-test.only('Should render the header', async () => {
+test('Should render the header', async () => {
   render(<App />)
   const banner = screen.getByRole('banner')
   const headerImg = screen.getByAltText(/alchemy/i)
@@ -71,7 +71,11 @@ test('Should render the header with Sasuke 🌬️🔥', async () => {
     color: 'crimson',
   }
 
-  // 🚨 Use the server to change the response for this test
+  server.use(
+    rest.get('https://uzgiamkrbapxufnwdrja.supabase.co/rest/v1/users', (req, res, ctx) => {
+      return res(ctx.json([sasuke]))
+    })
+  )
 
   render(<App />)
 
