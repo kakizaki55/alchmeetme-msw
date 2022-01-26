@@ -21,16 +21,6 @@ const user = {
   motto: 'Res Non Verba',
   color: 'crimson',
 }
-console.log(user)
-// 'https://uzgiamkrbapxufnwdrja.supabase.co/rest/v1/users'
-
-/**
- * Goes inside the callback function body
- *     const select = req.url.searchParams.get('select')
-    if (select === '*') {
-      return res()
-    }
- */
 
 // 🚨 Create your server
 const server = setupServer(
