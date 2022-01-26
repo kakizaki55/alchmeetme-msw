@@ -12,7 +12,7 @@ const user = {
   color: 'crimson',
 }
 
-test('Should send a user object with all needed properties', async () => {
+test.skip('Should send a user object with all needed properties', async () => {
   render(<Home user={user} />)
 
   expect(user).toHaveProperty('id')
@@ -24,7 +24,7 @@ test('Should send a user object with all needed properties', async () => {
   expect(user).toHaveProperty('color')
 })
 
-test('Should render the user profile', async () => {
+test.skip('Should render the user profile', async () => {
   render(<Home user={user} />)
 
   const { name, color, motto, likes } = user
